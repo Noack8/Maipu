@@ -69,13 +69,13 @@ function App() {
               <li>
                 <a href="https://vite.dev/" target="_blank" rel="noreferrer">
                   <img className="logo" src={viteLogo} alt="" />
-                  Explore Vite
+                  Explora Vite
                 </a>
               </li>
               <li>
                 <a href="https://react.dev/" target="_blank" rel="noreferrer">
                   <img className="button-icon" src={reactLogo} alt="" />
-                  Learn more
+                  Aprender mas
                 </a>
               </li>
             </ul>
