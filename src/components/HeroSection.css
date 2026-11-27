@@ -18,16 +18,22 @@
   margin-bottom: 2rem;
 }
 
-.hero-image-placeholder {
+/* src/components/HeroSection.css */
+.hero-image-container {
   width: 100%;
-  max-width: 800px;
-  height: 300px;
-  background-color: #e9ecef;
-  margin: 0 auto;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 12px;
+  max-width: 1000px; /* Ancho máximo de la imagen */
+  margin: 0 auto;    /* Centra el contenedor */
+  border-radius: 16px; /* Bordes redondeados */
+  overflow: hidden;  /* Corta lo que sobresalga de los bordes */
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); /* Sombra elegante */
+}
+
+.hero-image {
+  width: 100%;
+  height: auto;
+  display: block;
+  max-height: 500px; /* Altura máxima para que no ocupe toda la pantalla */
+  object-fit: cover; /* Recorta la imagen sin deformarla */
 }
 
 @keyframes fadeIn {

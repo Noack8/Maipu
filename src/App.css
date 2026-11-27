@@ -158,3 +158,205 @@
 .swiper-button-prev {
   color: #1a73e8 !important;
 }
+
+/* ========================================= */
+/* === CORRECCIÓN PARA NAVBAR Y FOOTER === */
+/* ========================================= */
+
+/* 1. Proteger al Navbar para que no se encoja */
+.topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 5%; /* Le da margen a los lados para que respire */
+  height: 85px; /* Altura fija para que no se vea aplastado */
+  background-color: #ffffff;
+  border-bottom: 1px solid #e5e7eb;
+  flex-shrink: 0;
+}
+
+.topbar-brand {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+}
+
+.topbar-logo {
+  height: 35px; /* Ajusta el tamaño del logo si es necesario */
+  width: auto;
+}
+
+.topbar-links {
+  display: flex;
+  align-items: center;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  flex: 1; /* Toma el espacio sobrante */
+  justify-content: space-evenly; /* Distribuye los enlaces equitativamente en la pantalla */
+  max-width: 900px; /* Evita que en pantallas gigantes se separen demasiado */
+  margin-left: auto; /* Empuja los enlaces hacia la derecha */
+}
+
+.topbar-link {
+  background: transparent;
+  border: none;
+  color: #333333;
+  font-size: 16px;
+  font-weight: 500;
+  font-family: inherit;
+  cursor: pointer;
+  padding: 10px 15px;
+  position: relative; /* Necesario para la animación de la línea */
+  transition: color 0.3s ease;
+}
+
+.topbar-link::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 3px;
+  background-color: #0b4a8e; /* Azul oscuro de Maipu */
+  transition: width 0.3s ease;
+  border-radius: 2px;
+}
+
+.topbar-link:hover {
+  color: #0b4a8e; /* El texto cambia al azul de Maipu */
+}
+
+.topbar-link:hover::after {
+  width: 100%; /* La línea se expande de 0 a 100% */
+}
+
+.topbar-link.is-active {
+  color: #0b4a8e;
+  font-weight: 700;
+}
+
+.topbar-link.is-active::after {
+  width: 100%; /* La línea se queda fija en la sección actual */
+  background-color: #0b4a8e;
+}
+
+/* ================= FOOTER ================= */
+.site-footer {
+  background-color: #0b1f3a; /* Azul muy oscuro corporativo de Maipu */
+  color: #d1d5db;
+  padding: 60px 5% 20px; /* 5% a los lados para que no esté pegado a la pantalla */
+  flex-shrink: 0;
+  font-family: inherit;
+}
+
+.footer-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.footer-columns {
+  display: flex;
+  justify-content: space-between; /* Distribuye las columnas por todo el ancho */
+  flex-wrap: wrap;
+  gap: 40px;
+  margin-bottom: 50px;
+}
+
+.footer-col {
+  flex: 1;
+  min-width: 200px; /* Asegura que en móviles se acomoden bien */
+}
+
+.footer-col h3 {
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em; /* Espaciado entre letras para verse elegante */
+}
+
+.footer-col ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-col ul li {
+  margin-bottom: 12px;
+}
+
+/* Animación de los enlaces del footer */
+.footer-col ul li a, 
+.footer-col p a {
+  color: #9ca3af;
+  text-decoration: none;
+  font-size: 14px;
+  transition: all 0.3s ease;
+  display: inline-block;
+}
+
+/* Efecto al pasar el ratón: Cambia a azul claro y se mueve tantito a la derecha */
+.footer-col ul li a:hover, 
+.footer-col p a:hover {
+  color: #60a5fa; 
+  transform: translateX(5px); 
+}
+
+.footer-col p {
+  font-size: 14px;
+  margin-bottom: 10px;
+  color: #9ca3af;
+  line-height: 1.6;
+}
+
+/* Línea inferior de Copyright */
+.footer-bottom {
+  border-top: 1px solid #1f2937;
+  padding-top: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  font-size: 13px;
+  color: #6b7280;
+}
+
+.footer-legal {
+  display: flex;
+  gap: 15px;
+}
+
+.footer-legal a {
+  color: #9ca3af;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.footer-legal a:hover {
+  color: #ffffff;
+}
+
+/* 2. Proteger al Footer para que no se encoja */
+.site-footer {
+  flex-shrink: 0; /* Evita que Flexbox lo aplaste */
+  background-color: #333333;
+  color: #a0a0a0;
+  padding: 40px 24px 20px;
+  margin-top: 40px; /* Separación del contenido principal */
+}
+
+/* 3. Asegurar que el contenedor principal ocupe al menos el alto de la pantalla */
+.app-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* Ocupa el 100% del alto de la ventana */
+  width: 100%;
+}
+
+.main-content {
+  flex: 1; /* Esto hace que el contenido empuje al footer hacia abajo */
+}
