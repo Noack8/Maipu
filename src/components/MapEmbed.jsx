@@ -1,9 +1,10 @@
-// components/MapEmbed.jsx
+// src/components/MapEmbed.jsx
 function MapEmbed() {
   return (
     <div className="map-container">
       <iframe
-        src="https://www.google.com/maps/embed?pb=..." // Pega aquí el enlace que copiaste
+        // Aquí usamos las coordenadas exactas de tu enlace
+        src="https://maps.google.com/maps?q=19.441112,-99.1965961&z=15&output=embed"
         width="100%"
         height="450"
         style={{ border: 0 }}
@@ -15,4 +16,5 @@ function MapEmbed() {
     </div>
   );
 }
+
 export default MapEmbed;
