@@ -1,88 +1,288 @@
+/* src/pages/CasosExito.css */
+
 .casos-exito-page {
-  padding: 40px 5%;
   background-color: #f8f9fa;
-  min-height: 80vh;
+  min-height: 100vh;
+  padding: 60px 5%;
 }
 
-.casos-section {
-  max-width: 1400px;
-  margin: 0 auto 80px auto;
-}
-.casos-section h2 {
-  font-size: 2.2rem;
-  color: #0b1f3a;
-  margin-bottom: 40px;
+.casos-header {
   text-align: center;
+  margin-bottom: 50px;
 }
 
-/* Grid de 2 columnas para tarjetas de ancho completo */
-.success-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 30px;
+.casos-header h1 {
+  font-size: 3rem;
+  color: #0b1f3a;
 }
 
-.success-card-full {
+.casos-grid-layout {
+  display: flex;
+  gap: 40px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.casos-column {
+  flex: 1;
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+}
+
+.casos-column h2 {
+  font-size: 2rem;
+  color: #0b4a8e;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.vertical-swiper {
+  width: 100%;
+  height: 650px; 
+  padding: 10px;
+}
+
+.caso-card-horizontal {
+  display: flex;
+  flex-direction: row; 
   background: #ffffff;
   border-radius: 12px;
   overflow: hidden;
-  box-shadow: 0 6px 20px rgba(0,0,0,0.08);
-  display: flex;
-  flex-direction: row; /* Imagen a la izquierda, texto a la derecha */
+  box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+  height: 190px; 
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-.success-card-full:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 12px 30px rgba(0,0,0,0.12);
+  border-left: 5px solid #0b4a8e; 
 }
 
-.card-image-placeholder {
-  width: 45%;
-  min-height: 250px;
+.caso-card-horizontal:hover {
+  transform: translateX(5px);
+  box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+}
+
+.caso-img-placeholder {
+  width: 40%;
   background-color: #e9ecef;
   display: flex;
   align-items: center;
   justify-content: center;
   color: #888;
+  font-weight: 500;
   font-size: 0.9rem;
 }
 
-.card-content {
-  padding: 30px;
-  width: 55%;
+.caso-info {
+  width: 60%;
+  padding: 20px;
   display: flex;
   flex-direction: column;
   justify-content: center;
 }
-.card-content h3 {
-  font-size: 1.4rem;
+
+.caso-info h3 {
+  font-size: 1.2rem;
   color: #0b1f3a;
-  margin-bottom: 15px;
+  margin-bottom: 10px;
+  line-height: 1.2;
 }
-.card-content p {
-  color: #666;
-  line-height: 1.6;
-  margin-bottom: 20px;
+
+.caso-info p {
+  font-size: 0.9rem;
+  color: #555;
+  line-height: 1.5;
+  margin-bottom: 15px;
+  display: -webkit-box;
+  -webkit-line-clamp: 2; 
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
 .card-button {
   align-self: flex-start;
-  padding: 10px 20px;
+  padding: 8px 16px;
   background-color: #0b4a8e;
   color: white;
   border: none;
   border-radius: 6px;
   cursor: pointer;
-  font-weight: 500;
+  font-weight: 600;
+  font-size: 0.85rem;
   transition: background-color 0.2s;
 }
+
 .card-button:hover {
   background-color: #083866;
 }
 
-@media (max-width: 1024px) {
-  .success-grid { grid-template-columns: 1fr; }
-  .success-card-full { flex-direction: column; }
-  .card-image-placeholder, .card-content { width: 100%; }
-  .card-image-placeholder { min-height: 200px; }
+.vertical-swiper .swiper-button-next,
+.vertical-swiper .swiper-button-prev {
+  display: none;
+}
+
+@media (max-width: 992px) {
+  .casos-grid-layout {
+    flex-direction: column;
+  }
+  .casos-column {
+    width: 100%;
+  }
+  .vertical-swiper {
+    height: 500px;
+  }
+}
+
+.casos-exito-page {
+  background-color: #f8f9fa;
+  min-height: 100vh;
+  padding: 40px 5%; 
+}
+
+.casos-grid-layout {
+  display: flex;
+  gap: 60px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.casos-column {
+  flex: 1;
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+}
+
+.casos-column h2 {
+  font-size: 1.8rem;
+  color: #0b1f3a;
+  text-align: center;
+  margin-bottom: 20px;
+  font-weight: 600;
+}
+
+.vertical-swiper {
+  width: 100%;
+  height: 650px; 
+  padding: 40px 10px;
+}
+
+.caso-card-horizontal {
+  display: flex;
+  flex-direction: row; 
+  background: #ffffff;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+  height: 190px; 
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border-left: 5px solid #0b4a8e; 
+}
+
+.caso-card-horizontal:hover {
+  transform: translateX(5px);
+  box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+}
+
+.caso-img-placeholder {
+  width: 40%;
+  background-color: #e9ecef;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #888;
+  font-weight: 500;
+  font-size: 0.9rem;
+}
+
+.caso-info {
+  width: 60%;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.caso-info h3 {
+  font-size: 1.2rem;
+  color: #0b1f3a;
+  margin-bottom: 10px;
+  line-height: 1.2;
+}
+
+.caso-info p {
+  font-size: 0.9rem;
+  color: #555;
+  line-height: 1.5;
+  margin-bottom: 15px;
+  display: -webkit-box;
+  -webkit-line-clamp: 2; 
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.card-button {
+  align-self: flex-start;
+  padding: 8px 16px;
+  background-color: #0b4a8e;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 0.85rem;
+  transition: background-color 0.2s;
+}
+
+.card-button:hover {
+  background-color: #083866;
+}
+
+.vertical-swiper .swiper-button-next,
+.vertical-swiper .swiper-button-prev {
+  color: #ffffff;
+  background-color: #0b4a8e;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  transition: background-color 0.2s;
+}
+
+.vertical-swiper .swiper-button-next:hover,
+.vertical-swiper .swiper-button-prev:hover {
+  background-color: #083866;
+}
+
+.vertical-swiper .swiper-button-next::after,
+.vertical-swiper .swiper-button-prev::after {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.vertical-swiper .swiper-button-prev {
+  top: 0; 
+}
+
+.vertical-swiper .swiper-button-next {
+  bottom: 0;
+  top: auto; 
+}
+
+@media (max-width: 992px) {
+  .casos-grid-layout {
+    flex-direction: column;
+  }
+  .casos-column {
+    width: 100%;
+  }
+  .vertical-swiper {
+    height: 500px;
+  }
+}
+
+.caso-img-placeholder img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Recorta la imagen para que llene el espacio sin deformarse */
+  display: block;
 }

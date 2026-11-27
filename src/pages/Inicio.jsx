@@ -1,7 +1,8 @@
 import { useEffect, useRef } from 'react'
 import './Inicio.css'
+import heroBg from '../assets/hero-bg.png' 
+import maipuEdificio from '../assets/building.jpg' 
 
-// Componente para animar la entrada de secciones
 const AnimateOnScroll = ({ children }) => {
   const ref = useRef(null)
 
@@ -27,13 +28,24 @@ const AnimateOnScroll = ({ children }) => {
 
 function Inicio() {
   return (
-    <div className="inicio-page">
-      {/* Hero Section */}
-      <section className="hero-section">
-        <h1 className="hero-title">Soluciones TIC de Alto Nivel</h1>
-        <p className="hero-subtitle">
-          Resiliencia, Innovación, Inversión Inteligente & Estrategia | Corporativo y Gobierno
-        </p>
+     <div className="inicio-page">
+      <section 
+        className="hero-section" 
+        style={{ 
+          backgroundImage: `linear-gradient(rgba(11, 31, 58, 0.3), rgba(11, 31, 58, 0.3)), url(${heroBg})`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center'
+        }}
+      >
+        {/* Envolvemos el texto en este contenedor */}
+        <div className="hero-text-container">
+          <h1 className="hero-title" style={{ color: '#ffffff' }}>
+            Soluciones TIC de Alto Nivel
+          </h1>
+          <p className="hero-subtitle" style={{ color: '#ffffff' }}>
+            Resiliencia, Innovación, Inversión Inteligente & Estrategia | Corporativo y Gobierno
+          </p>
+        </div>
       </section>
 
       {/* Perfil Corporativo */}
@@ -41,6 +53,7 @@ function Inicio() {
         <section className="perfil-corporativo">
           <h2>Perfil Corporativo</h2>
           <div className="perfil-content">
+            
             <div className="perfil-text">
               <p>
                 <strong>Maipu Communication Technologies</strong>, fundada en 1993, es líder en redes seguras, digitalización e IA aplicada, ciberseguridad e infraestructura de TI.
@@ -52,10 +65,15 @@ function Inicio() {
                 Con <strong>+33 años de experiencia</strong>, construimos ecosistemas digitales seguros y autosuficientes.
               </p>
             </div>
-            <div className="perfil-image-placeholder">
-              {/* Espacio para la imagen del edificio de la presentación */}
-              [Imagen del Corporativo]
+
+            <div className="perfil-image-container">
+              <img 
+                src={maipuEdificio} 
+                alt="Edificio Corporativo Maipu" 
+                className="perfil-image" 
+              />
             </div>
+            
           </div>
         </section>
       </AnimateOnScroll>

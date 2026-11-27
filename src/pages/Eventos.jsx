@@ -1,6 +1,7 @@
+// src/pages/Eventos.jsx
 import { eventosData } from '../data/eventosData'
 import ContactForm from '../components/ContactForm'
-import './Eventos.css' // Archivo nuevo para estilos de eventos
+import './Eventos.css'
 
 function Eventos({ onViewDetail }) {
   return (
@@ -17,15 +18,12 @@ function Eventos({ onViewDetail }) {
               <h3>{evento.titulo}</h3>
               <p className="event-date">{evento.fecha}</p>
               <p className="event-desc">{evento.descripcion}</p>
-              
-              {/* AQUÍ AGREGAMOS EL ONCLICK */}
               <button 
                 className="card-button"
                 onClick={() => onViewDetail(evento, 'eventos')}
               >
                 Leer más
               </button>
-              
             </div>
           </div>
         ))}
