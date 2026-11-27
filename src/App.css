@@ -360,3 +360,15 @@
 .main-content {
   flex: 1; /* Esto hace que el contenido empuje al footer hacia abajo */
 }
+
+.map-container {
+  margin-top: 20px;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1); /* Una sombrita bonita */
+}
+
+.map-container iframe {
+  width: 100%;
+  display: block;
+}
