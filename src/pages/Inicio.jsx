@@ -1,16 +1,87 @@
-// pages/Inicio.jsx
-import HeroSection from '../components/HeroSection';
-import CardCarousel from '../components/CardCarousel';
-import { casosExitoMX } from '../data/casosExitoMX';
-import { casosExitoIntl } from '../data/casosExitoIntl';
+import { useEffect, useRef } from 'react'
+import './Inicio.css'
+
+// Componente para animar la entrada de secciones
+const AnimateOnScroll = ({ children }) => {
+  const ref = useRef(null)
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible')
+        }
+      },
+      { threshold: 0.1 }
+    )
+    if (ref.current) observer.observe(ref.current)
+    return () => observer.disconnect()
+  }, [])
+
+  return (
+    <div ref={ref} className="fade-in-section">
+      {children}
+    </div>
+  )
+}
 
 function Inicio() {
   return (
-    <div>
-      <HeroSection />
-      <CardCarousel items={casosExitoMX} title="Casos de Éxito en México" />
-      <CardCarousel items={casosExitoIntl} title="Casos de Éxito Internacionales" />
+    <div className="inicio-page">
+      {/* Hero Section */}
+      <section className="hero-section">
+        <h1 className="hero-title">Soluciones TIC de Alto Nivel</h1>
+        <p className="hero-subtitle">
+          Resiliencia, Innovación, Inversión Inteligente & Estrategia | Corporativo y Gobierno
+        </p>
+      </section>
+
+      {/* Perfil Corporativo */}
+      <AnimateOnScroll>
+        <section className="perfil-corporativo">
+          <h2>Perfil Corporativo</h2>
+          <div className="perfil-content">
+            <div className="perfil-text">
+              <p>
+                <strong>Maipu Communication Technologies</strong>, fundada en 1993, es líder en redes seguras, digitalización e IA aplicada, ciberseguridad e infraestructura de TI.
+              </p>
+              <p>
+                Desde 2015 forma parte de <strong>China Electronics Corporation (CEC)</strong>, el grupo más grande de electrónica, semiconductores y TI en China. Ranking Fortune Global 500 por 14 años.
+              </p>
+              <p>
+                Con <strong>+33 años de experiencia</strong>, construimos ecosistemas digitales seguros y autosuficientes.
+              </p>
+            </div>
+            <div className="perfil-image-placeholder">
+              {/* Espacio para la imagen del edificio de la presentación */}
+              [Imagen del Corporativo]
+            </div>
+          </div>
+        </section>
+      </AnimateOnScroll>
+
+      {/* Pilares Tecnológicos */}
+      <AnimateOnScroll>
+        <section className="pilares-tecnologicos">
+          <h2>Telecomunicaciones de Alto Impacto</h2>
+          <div className="pilares-grid">
+            <div className="pilar-card">
+              <h3>Arquitectura Libre de Licenciamiento</h3>
+              <p>Funcionalidades avanzadas desbloqueadas desde el primer día, sin costos ocultos.</p>
+            </div>
+            <div className="pilar-card">
+              <h3>Actualizaciones de Firmware Perpetuas</h3>
+              <p>Tu infraestructura siempre al día y protegida, sin pagos recurrentes.</p>
+            </div>
+            <div className="pilar-card">
+              <h3>Estabilidad Crítica</h3>
+              <p>Sistemas diseñados para alta concurrencia, encriptación avanzada y máxima estabilidad.</p>
+            </div>
+          </div>
+        </section>
+      </AnimateOnScroll>
     </div>
-  );
+  )
 }
-export default Inicio;
+
+export default Inicio

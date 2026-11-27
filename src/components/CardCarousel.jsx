@@ -1,51 +1,45 @@
-// src/components/CardCarousel.jsx
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Autoplay, Pagination, Navigation } from 'swiper/modules';
-
-// Importamos los estilos de Swiper
+import { Autoplay, Navigation } from 'swiper/modules';
 import 'swiper/css';
-import 'swiper/css/pagination';
 import 'swiper/css/navigation';
+import './CardCarousel.css';
 
-function CardCarousel({ items, title }) {
+function CardCarousel({ items, title, initialSlide = 0 }) {
+  const safeInitialSlide = initialSlide < items.length ? initialSlide : 0;
+
   return (
     <section className="carousel-section">
-      <h2>{title}</h2>
+      {title && <h3 className="carousel-subtitle">{title}</h3>}
       
       <Swiper
-        modules={[Autoplay, Pagination, Navigation]}
-        spaceBetween={20}
+        modules={[Autoplay, Navigation]}
+        spaceBetween={10} // Espacio mínimo entre tarjetas para que se vean más anchas
         slidesPerView={1}
-        // Configuración para que se mueva solo
+        loop={true}
+        initialSlide={safeInitialSlide}
+        speed={800}
         autoplay={{
-          delay: 3000, // Se mueve cada 3 segundos
-          disableOnInteraction: false, // Sigue moviéndose aunque el usuario lo toque
+          delay: 3000,
+          disableOnInteraction: false,
         }}
-        // Puntitos de navegación
-        pagination={{ clickable: true }}
-        // Flechas para pasar de página
-        navigation={true}
-        // Cuántas tarjetas se ven según el tamaño de pantalla
         breakpoints={{
-          640: { slidesPerView: 2 },
-          1024: { slidesPerView: 3 },
-          1280: { slidesPerView: 4 },
+          768: { slidesPerView: 2, spaceBetween: 15 },
+          1024: { slidesPerView: 3, spaceBetween: 15 },
+          1280: { slidesPerView: 4, spaceBetween: 15 }, // 4 columnas
         }}
-        // Clase personalizada para que Swiper agregue márgenes y no quede pegado
         className="my-swiper"
       >
-        {items.map((item) => (
-          <SwiperSlide key={item.id}>
-            <div className="success-card">
-              {/* Aquí va la imagen */}
-              <div className="card-image-placeholder">
-                [Espacio para Imagen]
+        {items.map((item, index) => (
+          <SwiperSlide key={`${item.id}-${index}`}>
+            <div className="success-card-vertical">
+              <div className="card-image-vertical">
+                <span>Imagen del Caso</span>
               </div>
-              
-              <h3>{item.titulo}</h3>
-              <p>{item.descripcion}</p>
-              
-              <button className="card-button">Ver más</button>
+              <div className="card-content-vertical">
+                <h3>{item.titulo}</h3>
+                <p>{item.descripcion}</p>
+                <button className="card-button">Ver más</button>
+              </div>
             </div>
           </SwiperSlide>
         ))}

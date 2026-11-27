@@ -1,0 +1,98 @@
+/* src/components/CardCarousel.css */
+.carousel-section {
+  width: 100%;
+  padding: 0;
+  margin-bottom: -25px; /* MAGIA: Empuja la siguiente fila hacia arriba para pegarlas */
+  overflow: hidden;
+}
+
+.carousel-subtitle {
+  font-size: 1.5rem;
+  color: #555;
+  margin-bottom: 20px;
+  text-align: center;
+  font-weight: 500;
+}
+
+.my-swiper {
+  width: 100%;
+  /* Cero padding a los lados para que las tarjetas sean más anchas */
+  padding: 20px 10px 20px 10px; 
+  box-sizing: border-box;
+  overflow: visible; /* Permite que la sombra se vea sin cortarse */
+}
+
+/* Tarjeta Vertical */
+.success-card-vertical {
+  background: #ffffff;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+  display: flex;
+  flex-direction: column;
+  height: 480px; /* Un poco más altas */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: 1px solid #eaeaea;
+}
+
+.success-card-vertical:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 30px rgba(0,0,0,0.2);
+  z-index: 10;
+}
+
+.card-image-vertical {
+  width: 100%;
+  height: 250px; /* Imagen más grande */
+  background-color: #e9ecef;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #888;
+  font-weight: 500;
+}
+
+.card-content-vertical {
+  padding: 20px; 
+  display: flex;
+  flex-direction: column;
+  flex: 1; 
+}
+
+.card-content-vertical h3 {
+  font-size: 1.35rem; 
+  color: #0b1f3a;
+  margin-bottom: 10px;
+  line-height: 1.2;
+}
+
+.card-content-vertical p {
+  color: #555;
+  line-height: 1.5;
+  font-size: 0.95rem; 
+  margin-bottom: 15px;
+  flex: 1; 
+  display: -webkit-box;
+  -webkit-line-clamp: 3; /* Para navegadores basados en WebKit (Chrome, Safari) */
+  line-clamp: 3;         /* ESTÁNDAR: Esto quita el aviso de VS Code */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.card-button {
+  align-self: flex-start;
+  padding: 10px 20px;
+  background-color: #0b4a8e;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background-color 0.2s;
+  margin-top: auto; 
+  font-size: 0.95rem;
+}
+
+.card-button:hover {
+  background-color: #083866;
+}
