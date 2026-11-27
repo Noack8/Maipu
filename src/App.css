@@ -18,11 +18,40 @@
 }
 
 .topbar-brand {
-  font-family: var(--heading);
-  font-size: 20px;
-  font-weight: 600;
-  color: var(--text-h);
-  letter-spacing: -0.4px;
+  background: transparent;
+  background-color: transparent;
+  border: none;
+  border-radius: 0;
+  padding: 0;
+  margin: 0;
+  box-shadow: none;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  line-height: 0;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.topbar-brand:hover,
+.topbar-brand:focus {
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  outline: none;
+}
+
+.topbar-brand:focus-visible {
+  outline: 2px solid #1a73e8;
+  outline-offset: 4px;
+  border-radius: 4px;
+}
+
+.topbar-logo {
+  height: 28px;
+  width: auto;
+  display: block;
+  pointer-events: none;  
 }
 
 .topbar-links {
@@ -206,4 +235,296 @@
       box-sizing: border-box;
     }
   }
+}
+
+/* ===== Contenido principal ===== */
+.app-main {
+  flex: 1;
+  padding-bottom: 64px;   /* espacio para que la barra fija no tape el contenido */
+}
+
+/* ===== Barra de contacto fija abajo ===== */
+.contact-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 50;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  padding: 12px 24px;
+  background: #ffffff;
+  border-top: 1px solid #e5e7eb;
+  box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.04);
+  font-size: 14px;
+}
+
+.contact-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: #213547;
+  text-decoration: none;
+  transition: color 0.15s ease;
+}
+
+.contact-item:hover {
+  color: #1a73e8;
+  text-decoration: underline;
+}
+
+/* En pantallas chicas se apila */
+@media (max-width: 640px) {
+  .contact-bar {
+    gap: 0.75rem;
+    font-size: 13px;
+    padding: 8px 12px;
+  }
+}
+
+/* ================= MEGA MENÚ ================= */
+.nav-item {
+  position: static; /* Para que el menú use todo el ancho de la barra */
+}
+
+.mega-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  background: #ffffff;
+  border-bottom: 1px solid #e5e7eb;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05);
+  z-index: 100;
+  padding: 30px 0;
+}
+
+.mega-menu-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  gap: 40px;
+  padding: 0 24px;
+}
+
+.mega-column h4 {
+  font-size: 16px;
+  color: #333;
+  margin-bottom: 12px;
+  font-weight: 600;
+}
+
+.mega-column ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.mega-column ul li a {
+  display: block;
+  padding: 4px 0;
+  color: #666;
+  font-size: 14px;
+  text-decoration: none;
+}
+.mega-column ul li a:hover { color: #1a73e8; }
+
+/* ================= FOOTER ================= */
+.site-footer {
+  background-color: #333333;
+  color: #a0a0a0;
+  padding: 50px 0 20px;
+  margin-top: auto; /* Lo empuja al fondo si la página es corta */
+}
+
+.footer-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.footer-columns {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 30px;
+  margin-bottom: 40px;
+}
+
+.footer-col h3 {
+  color: #ffffff;
+  font-size: 16px;
+  margin-bottom: 20px;
+  font-weight: 500;
+}
+
+.footer-col ul { list-style: none; padding: 0; margin: 0; }
+.footer-col ul li { margin-bottom: 10px; }
+.footer-col ul li a { color: #a0a0a0; text-decoration: none; font-size: 14px; }
+.footer-col ul li a:hover { color: #ffffff; }
+.footer-col p { font-size: 14px; margin-bottom: 8px; }
+
+.footer-bottom {
+  border-top: 1px solid #444;
+  padding-top: 20px;
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+}
+
+.footer-legal a { color: #a0a0a0; text-decoration: none; margin: 0 5px; }
+.footer-legal a:hover { color: #ffffff; }
+
+/* ================= PÁGINA PRODUCTOS ================= */
+.product-page {
+  background: #f5f6f8;
+  flex: 1;
+  padding: 40px 24px;
+}
+
+.product-layout {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  gap: 20px;
+}
+
+/* Barra lateral izquierda */
+.product-sidebar {
+  width: 260px;
+  background: #ffffff;
+  padding: 10px 0;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.product-sidebar ul { list-style: none; padding: 0; margin: 0; }
+.product-sidebar button {
+  width: 100%;
+  text-align: left;
+  padding: 15px 20px;
+  background: none;
+  border: none;
+  border-bottom: 1px solid #f0f0f0;
+  font-size: 15px;
+  color: #333;
+  display: flex;
+  justify-content: space-between;
+  cursor: pointer;
+}
+.product-sidebar button:hover, .product-sidebar button.active {
+  color: #1a73e8;
+  background: #f8faff;
+}
+
+/* Contenido principal */
+.product-main { flex: 1; }
+
+.breadcrumb {
+  font-size: 13px;
+  color: #888;
+  margin-bottom: 20px;
+}
+
+.search-bar-container {
+  display: flex;
+  margin-bottom: 20px;
+}
+.search-bar-container input {
+  flex: 1;
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-right: none;
+}
+.search-bar-container .search-btn {
+  background: #0b4a8e;
+  color: white;
+  border: none;
+  padding: 0 40px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.product-content-box {
+  background: #ffffff;
+  border: 1px solid #eee;
+}
+
+.box-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  border-bottom: 1px solid #eee;
+}
+.box-header h2 { margin: 0; font-size: 20px; font-weight: 400; }
+.box-header a { font-size: 13px; color: #1a73e8; text-decoration: none; }
+
+.sub-tabs {
+  display: flex;
+  padding: 0 20px;
+  border-bottom: 1px solid #eee;
+}
+.sub-tabs button {
+  padding: 15px 20px;
+  background: none;
+  border: none;
+  border-bottom: 2px solid transparent;
+  color: #555;
+  cursor: pointer;
+  font-size: 14px;
+}
+.sub-tabs button.active {
+  color: #1a73e8;
+  border-bottom-color: #1a73e8;
+}
+
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 20px;
+  padding: 40px 20px;
+}
+
+.product-card {
+  text-align: center;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* Opcional: un borde sutil o fondo para que resalte la tarjeta */
+  border: 1px solid transparent;
+  transition: border-color 0.2s;
+}
+.product-card:hover {
+  border-color: #e5e7eb; /* Se ilumina el borde al pasar el ratón */
+}
+.product-card img {
+  width: 100%;
+  height: 180px;         /* Altura fija para todas las imágenes */
+  object-fit: contain;   /* Evita que se deformen */
+  margin-bottom: 15px;
+}
+.product-card p {
+  font-size: 14px;
+  color: #333;
+  margin: 0;
+}
+
+/* Adaptación para móviles */
+@media (max-width: 768px) {
+  .product-layout { flex-direction: column; }
+  .product-sidebar { width: 100%; }
+  .footer-columns { grid-template-columns: 1fr 1fr; }
+  .footer-bottom { flex-direction: column; gap: 10px; text-align: center; }
+}
+.product-link {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+  width: 100%;
+}
+.product-link:hover p {
+  color: #1a73e8; /* El texto se pone azul al pasar el ratón */
 }

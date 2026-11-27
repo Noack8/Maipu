@@ -1,133 +1,36 @@
 import { useState } from 'react'
-import heroImg from './assets/hero.png'
-import reactLogo from './assets/react.svg'
-import viteLogo from './assets/vite.svg'
+import Navbar from './components/Navbar'
+import ContactBar from './components/ContactBar'
+import Inicio from './pages/Inicio'
+import Productos from './pages/Productos'
+import Soluciones from './pages/Soluciones'
+import Soporte from './pages/Soporte'
+import Socio from './pages/Socio'
+import CasosExito from './pages/CasosExito'
+import AcercaDe from './pages/AcercaDe'
 import './App.css'
 
-const SECTIONS = [
-  { id: 'inicio', label: 'Inicio' },
-  { id: 'documentacion', label: 'Documentación' },
-  { id: 'comunidad', label: 'Comunidad' },
-]
+const PAGES = {
+  inicio: Inicio,
+  productos: Productos,
+  soluciones: Soluciones,
+  soporte: Soporte,
+  socio: Socio,
+  'casos-exito': CasosExito,
+  'acerca-de': AcercaDe,
+}
 
 function App() {
-  const [count, setCount] = useState(0)
   const [activeSection, setActiveSection] = useState('inicio')
+  const Page = PAGES[activeSection] ?? Inicio
 
   return (
     <>
-      <nav className="topbar" aria-label="Navegación principal">
-        <span className="topbar-brand">Maipu</span>
-        <ul className="topbar-links">
-          {SECTIONS.map((section) => (
-            <li key={section.id}>
-              <button
-                type="button"
-                className={`topbar-link${activeSection === section.id ? ' is-active' : ''}`}
-                aria-current={activeSection === section.id ? 'page' : undefined}
-                onClick={() => setActiveSection(section.id)}
-              >
-                {section.label}
-              </button>
-            </li>
-          ))}
-        </ul>
-      </nav>
-
-      {activeSection === 'inicio' && (
-        <section id="center">
-          <div className="hero">
-            <img src={heroImg} className="base" width="170" height="179" alt="" />
-            <img src={reactLogo} className="framework" alt="React logo" />
-            <img src={viteLogo} className="vite" alt="Vite logo" />
-          </div>
-          <div>
-            <h1>Get started</h1>
-            <p>
-              Edit <code>src/App.jsx</code> and save to test <code>HMR</code>
-            </p>
-          </div>
-          <button
-            type="button"
-            className="counter"
-            onClick={() => setCount((count) => count + 1)}
-          >
-            Count is {count}
-          </button>
-        </section>
-      )}
-
-      {activeSection === 'documentacion' && (
-        <section id="center" className="page-section" aria-labelledby="docs-heading">
-          <div className="section-card">
-            <svg className="icon" role="presentation" aria-hidden="true">
-              <use href="/icons.svg#documentation-icon"></use>
-            </svg>
-            <h2 id="docs-heading">Documentation</h2>
-            <p>Your questions, answered</p>
-            <ul className="link-list">
-              <li>
-                <a href="https://vite.dev/" target="_blank" rel="noreferrer">
-                  <img className="logo" src={viteLogo} alt="" />
-                  Explora Vite
-                </a>
-              </li>
-              <li>
-                <a href="https://react.dev/" target="_blank" rel="noreferrer">
-                  <img className="button-icon" src={reactLogo} alt="" />
-                  Aprender mas
-                </a>
-              </li>
-            </ul>
-          </div>
-        </section>
-      )}
-
-      {activeSection === 'comunidad' && (
-        <section id="center" className="page-section" aria-labelledby="social-heading">
-          <div className="section-card">
-            <svg className="icon" role="presentation" aria-hidden="true">
-              <use href="/icons.svg#social-icon"></use>
-            </svg>
-            <h2 id="social-heading">Connect with us</h2>
-            <p>Join the Vite community</p>
-            <ul className="link-list">
-              <li>
-                <a href="https://github.com/vitejs/vite" target="_blank" rel="noreferrer">
-                  <svg className="button-icon" role="presentation" aria-hidden="true">
-                    <use href="/icons.svg#github-icon"></use>
-                  </svg>
-                  GitHub
-                </a>
-              </li>
-              <li>
-                <a href="https://chat.vite.dev/" target="_blank" rel="noreferrer">
-                  <svg className="button-icon" role="presentation" aria-hidden="true">
-                    <use href="/icons.svg#discord-icon"></use>
-                  </svg>
-                  Discord
-                </a>
-              </li>
-              <li>
-                <a href="https://x.com/vite_js" target="_blank" rel="noreferrer">
-                  <svg className="button-icon" role="presentation" aria-hidden="true">
-                    <use href="/icons.svg#x-icon"></use>
-                  </svg>
-                  X.com
-                </a>
-              </li>
-              <li>
-                <a href="https://bsky.app/profile/vite.dev" target="_blank" rel="noreferrer">
-                  <svg className="button-icon" role="presentation" aria-hidden="true">
-                    <use href="/icons.svg#bluesky-icon"></use>
-                  </svg>
-                  Bluesky
-                </a>
-              </li>
-            </ul>
-          </div>
-        </section>
-      )}
+      <Navbar activeSection={activeSection} onNavigate={setActiveSection} />
+      <main>
+        <Page />
+      </main>
+      <ContactBar />
     </>
   )
 }
