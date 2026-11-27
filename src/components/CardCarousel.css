@@ -1,9 +1,10 @@
 /* src/components/CardCarousel.css */
 .carousel-section {
   width: 100%;
-  padding: 0;
-  margin-bottom: -25px; /* MAGIA: Empuja la siguiente fila hacia arriba para pegarlas */
-  overflow: hidden;
+  /* Aumentamos el padding a los lados de 15px a 30px */
+  padding: 0 30px; 
+  box-sizing: border-box;
+  margin: 0;
 }
 
 .carousel-subtitle {
@@ -16,10 +17,10 @@
 
 .my-swiper {
   width: 100%;
-  /* Cero padding a los lados para que las tarjetas sean más anchas */
-  padding: 20px 10px 20px 10px; 
+  /* Altura fija para evitar el espacio fantasma de Swiper */
+  height: 540px; 
+  padding: 30px 0; 
   box-sizing: border-box;
-  overflow: visible; /* Permite que la sombra se vea sin cortarse */
 }
 
 /* Tarjeta Vertical */
@@ -30,7 +31,7 @@
   box-shadow: 0 6px 20px rgba(0,0,0,0.1);
   display: flex;
   flex-direction: column;
-  height: 480px; /* Un poco más altas */
+  height: 480px; 
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   border: 1px solid #eaeaea;
 }
@@ -43,7 +44,7 @@
 
 .card-image-vertical {
   width: 100%;
-  height: 250px; /* Imagen más grande */
+  height: 250px;
   background-color: #e9ecef;
   display: flex;
   align-items: center;
@@ -73,8 +74,8 @@
   margin-bottom: 15px;
   flex: 1; 
   display: -webkit-box;
-  -webkit-line-clamp: 3; /* Para navegadores basados en WebKit (Chrome, Safari) */
-  line-clamp: 3;         /* ESTÁNDAR: Esto quita el aviso de VS Code */
+  -webkit-line-clamp: 3; 
+  line-clamp: 3;         
   -webkit-box-orient: vertical;
   overflow: hidden;
 }

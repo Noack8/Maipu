@@ -5,24 +5,46 @@ import Inicio from './pages/Inicio'
 import CasosExito from './pages/CasosExito'
 import Eventos from './pages/Eventos'
 import AcercaDe from './pages/AcercaDe'
+import DetalleItem from './pages/DetalleItem' // 1. Importamos la nueva página
 import './App.css'
-
-const PAGES = {
-  'inicio': Inicio,
-  'casos-exito': CasosExito,
-  'eventos': Eventos,
-  'acerca-de': AcercaDe,
-}
 
 function App() {
   const [activeSection, setActiveSection] = useState('inicio')
-  const Page = PAGES[activeSection] ?? Inicio
+  const [selectedItem, setSelectedItem] = useState(null) // 2. Guarda los datos
+  const [previousPage, setPreviousPage] = useState('inicio') // 3. Para saber a dónde volver
+
+  // Función para ir a los detalles
+  const handleViewDetail = (item, fromPage) => {
+    setSelectedItem(item)
+    setPreviousPage(fromPage)
+    setActiveSection('detalle')
+  }
+
+  // Función para volver atrás
+  const handleBack = () => {
+    setSelectedItem(null)
+    setActiveSection(previousPage)
+  }
+
+  // Función normal de navegación (limpia los detalles si cambias de página)
+  const handleNavigate = (section) => {
+    setSelectedItem(null)
+    setActiveSection(section)
+  }
+
+  // Renderizamos el componente según el estado
+  let PageComponent
+  if (activeSection === 'inicio') PageComponent = <Inicio />
+  if (activeSection === 'casos-exito') PageComponent = <CasosExito onViewDetail={handleViewDetail} />
+  if (activeSection === 'eventos') PageComponent = <Eventos onViewDetail={handleViewDetail} />
+  if (activeSection === 'acerca-de') PageComponent = <AcercaDe />
+  if (activeSection === 'detalle') PageComponent = <DetalleItem item={selectedItem} onBack={handleBack} />
 
   return (
     <>
-      <Navbar activeSection={activeSection} onNavigate={setActiveSection} />
+      <Navbar activeSection={activeSection} onNavigate={handleNavigate} />
       <main className="app-main">
-        <Page />
+        {PageComponent}
       </main>
       <Footer />
     </>

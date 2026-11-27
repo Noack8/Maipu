@@ -13,7 +13,7 @@ function CardCarousel({ items, title, initialSlide = 0 }) {
       
       <Swiper
         modules={[Autoplay, Navigation]}
-        spaceBetween={10} // Espacio mínimo entre tarjetas para que se vean más anchas
+        spaceBetween={40} 
         slidesPerView={1}
         loop={true}
         initialSlide={safeInitialSlide}
@@ -23,9 +23,9 @@ function CardCarousel({ items, title, initialSlide = 0 }) {
           disableOnInteraction: false,
         }}
         breakpoints={{
-          768: { slidesPerView: 2, spaceBetween: 15 },
-          1024: { slidesPerView: 3, spaceBetween: 15 },
-          1280: { slidesPerView: 4, spaceBetween: 15 }, // 4 columnas
+          768: { slidesPerView: 2, spaceBetween: 40 },
+          1024: { slidesPerView: 3, spaceBetween: 40 },
+          1280: { slidesPerView: 4, spaceBetween: 40 },
         }}
         className="my-swiper"
       >
@@ -38,7 +38,12 @@ function CardCarousel({ items, title, initialSlide = 0 }) {
               <div className="card-content-vertical">
                 <h3>{item.titulo}</h3>
                 <p>{item.descripcion}</p>
-                <button className="card-button">Ver más</button>
+                <button 
+                  className="card-button" 
+                  onClick={() => onItemClick(item)} // <-- Pasa el item al hacer clic
+                >
+                  Ver más
+                </button>
               </div>
             </div>
           </SwiperSlide>
